@@ -1,11 +1,7 @@
-FROM python:3.10-slim
-
+FROM python:3.14
+LABEL maintainer="toto@provider.com>"
+COPY ./requirements.txt /app/requirements.txt
 WORKDIR /app
-
-COPY . .
-
 RUN pip install -r requirements.txt
-
-EXPOSE 5000
-
-CMD ["python", "/mod_main.py"]
+COPY . /app
+CMD [ "python", "./mod_main.py" ]
